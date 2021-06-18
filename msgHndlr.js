@@ -1,18 +1,18 @@
 const moment = require('moment-timezone')
 const get = require('got')
 const fetch = require('node-fetch')
-const color = require('./lib/color')
+const color = require('./bintangp02/color')
 const { spawn, exec } = require('child_process')
 const nhentai = require('nhentai-js')
 const { API } = require('nhentai-api')
 const { decryptMedia } = require('@open-wa/wa-decrypt')
 const fs = require('fs-extra')
 const axios = require('axios')
-const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
-const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
+const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./bintangp02/functions')
+const { help, snk, info, donate, readme, listChannel } = require('./bintangp02/help')
 const { stdout } = require('process')
-const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
-const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
+const nsfw_ = JSON.parse(fs.readFileSync('./bintangp02/NSFW.json'))
+const welkom = JSON.parse(fs.readFileSync('./bintangp02/welcome.json'))
 const { RemoveBgResult, removeBackgroundFromImageBase64, removeBackgroundFromImageFile } = require('remove.bg')
 
 moment.tz.setDefault('Asia/Jakarta').locale('id')
@@ -107,7 +107,7 @@ module.exports = msgHandler = async (client, message) => {
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     })
                 } else (
-                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 sec!', id)
+                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 detik!', id)
                 )
             }
             break
@@ -170,7 +170,7 @@ module.exports = msgHandler = async (client, message) => {
             await fetch(urlnulis, {method: "GET"})
             .then(res => res.json())
             .then(async (json) => {
-                await client.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'Nih anjim', id)
+                await client.sendFileFromUrl(from, json.result, 'Nulis.jpg', 'lu ngak bisa nulis goblok', id)
             }).catch(e => client.reply(from, "Error: "+ e));
             break
         case '!ytmp3':
@@ -214,7 +214,7 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
         case '!wiki':
-            if (args.length === 1) return client.reply(from, 'Kirim perintah *!wiki [query]*\nContoh : *!wiki asu*', id)
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!wiki [query]*\nContoh : *!wiki lelelawar*', id)
             const query_ = body.slice(6)
             const wiki = await get.get(`https://mhankbarbar.moe/api/wiki?q=${query_}&lang=id&apiKey=${apiKey}`).json()
             if (wiki.error) {
@@ -224,7 +224,7 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
         case '!cuaca':
-            if (args.length === 1) return client.reply(from, 'Kirim perintah *!cuaca [tempat]*\nContoh : *!cuaca tangerang', id)
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!cuaca [tempat]*\nContoh : *!cuaca semarang', id)
             const tempat = body.slice(7)
             const weather = await get.get(`https://mhankbarbar.moe/api/weather?city=${tempat}&apiKey=${apiKey}`).json()
             if (weather.error) {
@@ -295,7 +295,7 @@ module.exports = msgHandler = async (client, message) => {
                 fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
                 client.reply(from, 'Fitur welcome berhasil di nonaktifkan di group ini!', id)
             } else {
-                client.reply(from, 'Pilih enable atau disable udin!', id)
+                client.reply(from, 'Pilih enable atau disable 🙂', id)
             }
             break
         case '!nsfwmenu':
@@ -363,9 +363,10 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, '[ WRONG ] Kirim perintah *!nh [nuClear]* untuk contoh kirim perintah *!readme*')
             }
         	break
+        case '!brainli':
         case '!brainly':
             if (args.length >= 2){
-                const BrainlySearch = require('./lib/brainly')
+                const BrainlySearch = require('./bintangp02/brainly')
                 let tanya = body.slice(9)
                 let jum = Number(tanya.split('.')[1]) || 2
                 if (jum > 10) return client.reply(from, 'Max 10!', id)
@@ -453,12 +454,12 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
         case '!bc':
-            if (!isOwner) return client.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
+            if (!isOwner) return client.reply(from, 'Lu Owner?', id)
             let msg = body.slice(4)
             const chatz = await client.getAllChatIds()
             for (let ids of chatz) {
                 var cvk = await client.getChatById(ids)
-                if (!cvk.isReadOnly) await client.sendText(ids, `[ Shinomiya Kaguya BOT Broadcast ]\n\n${msg}`)
+                if (!cvk.isReadOnly) await client.sendText(ids, `${msg}`)
             }
             client.reply(from, 'Broadcast Success!', id)
             break
