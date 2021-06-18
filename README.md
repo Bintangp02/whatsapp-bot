@@ -18,6 +18,12 @@
 > npm start
 ```
 
+## Info Update
+```
+> ...
+>
+>
+```
 ## Features
 
 | Sticker Creator |                Feature           |
