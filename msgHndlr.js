@@ -1,11 +1,3 @@
-/*
-* "Wahai orang-orang yang beriman, mengapakah kamu mengatakan sesuatu yang tidak kamu kerjakan?
-* Amat besar kebencian di sisi Allah bahwa kamu mengatakan apa-apa yang tidak kamu kerjakan."
-* (QS ash-Shaff: 2-3).
-*/
-const { decryptMedia } = require('@open-wa/wa-decrypt')
-const fs = require('fs-extra')
-const axios = require('axios')
 const moment = require('moment-timezone')
 const get = require('got')
 const fetch = require('node-fetch')
@@ -13,6 +5,9 @@ const color = require('./lib/color')
 const { spawn, exec } = require('child_process')
 const nhentai = require('nhentai-js')
 const { API } = require('nhentai-api')
+const { decryptMedia } = require('@open-wa/wa-decrypt')
+const fs = require('fs-extra')
+const axios = require('axios')
 const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
 const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
@@ -56,15 +51,14 @@ module.exports = msgHandler = async (client, message) => {
                 Iv: '[❗] Link yang anda kirim tidak valid!'
             }
         }
-        const apiKey = 'API-KEY' // apikey you can get it at https://mhankbarbar.moe
         const time = moment(t * 1000).format('DD/MM HH:mm:ss')
         const botNumber = await client.getHostNumber()
         const blockNumber = await client.getBlockedIds()
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
+        const apiKey = 'xabcjkiNtZAvKyHDkdfb' // apikey you can get it at https://mhankbarbar.moe
         const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
         const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
-        const ownerNumber = ["628xxx@c.us","55xxxxx"] // replace with your whatsapp number
         const isOwner = ownerNumber.includes(sender.id)
         const isBlocked = blockNumber.includes(sender.id)
         const isNsfw = isGroupMsg ? nsfw_.includes(chat.id) : false
@@ -136,7 +130,7 @@ module.exports = msgHandler = async (client, message) => {
             break
         case '!donasi':
         case '!donate':
-            client.sendLinkWithAutoPreview(from, 'https://saweria.co/donate/mhankbarbar', donate)
+            client.sendLinkWithAutoPreview(from, 'Subsribe- BP BOT OFFICIAL', donate)
             break
         case '!tts':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
@@ -248,7 +242,13 @@ module.exports = msgHandler = async (client, message) => {
             client.sendFileFromUrl(from, epbe.result, 'epbe.mp4', epbe.title, id)
             break
         case '!creator':
-            client.sendContact(from, '6285892766102@c.us')
+            client.sendContact(from, '6289647417373@c.us')
+            break
+        case '!bot':
+            client.sendContact(from, '62896474173739@c.us')
+            break
+        case '!owner':
+            client.sendContact(from, '6289647417373@c.us')
             break
         case '!ig':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!ig [linkIg]* untuk contoh silahkan kirim perintah *!readme*')
@@ -769,15 +769,19 @@ module.exports = msgHandler = async (client, message) => {
         case '!help':
             client.sendText(from, help)
             break
+        case '!Bot':
+            client.sendText(from, help)
+            break
         case '!readme':
             client.reply(from, readme, id)
             break
         case '!info':
-            client.sendLinkWithAutoPreview(from, 'https://github.com/mhankbarbar/whatsapp-bot', info)
+            client.sendLinkWithAutoPreview(from, 'https://github.com/Bintangp02', info)
             break
         case '!snk':
             client.reply(from, snk, id)
             break
+        const ownerNumber = ["6289647417373@c.us","62896474173739"] // replace with your whatsapp number
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
