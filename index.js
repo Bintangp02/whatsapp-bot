@@ -1,4 +1,7 @@
 //Scorimhankbarbar
+//Punyamhankbarbar
+//Izindulucukk
+//MakasihMhankbarbar
 const { create, Client } = require('@open-wa/wa-automate')
 const welcome = require('./bintangp02/welcome')
 const msgHandler = require('./msgHndlr')
@@ -15,7 +18,7 @@ const start = async (client = new Client()) => {
         client.onMessage((async (message) => {
             client.getAmountOfLoadedMessages()
             .then((msg) => {
-                if (msg >= 3000) {
+                if (msg >= 100) {
                     client.cutMsgCache()
                 }
             })
