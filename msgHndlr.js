@@ -569,25 +569,6 @@ module.exports = msgHandler = async (client, message) => {
             await client.demoteParticipant(groupId, mentionedJidList[0])
             await client.sendTextWithMentions(from, `Perintah diterima, menghapus jabatan @${mentionedJidList[0]}.`)
             break
-        case '!join':
-            //return client.reply(from, 'Jika ingin meng-invite bot ke group anda, silahkan izin ke wa.me/6285892766102', id)
-            if (args.length < 2) return client.reply(from, 'Kirim perintah *!join linkgroup key*\n\nEx:\n!join https://chat.whatsapp.com/blablablablablabla abcde\nuntuk key kamu bisa mendapatkannya hanya dengan donasi 5k', id)
-            const link = args[1]
-            const key = args[2]
-            const tGr = await client.getAllGroups()
-            const minMem = 30
-            const isLink = link.match(/(https:\/\/chat.whatsapp.com)/gi)
-            if (key !== 'lGjYt4zA5SQlTDx9z9Ca') return client.reply(from, '*key* salah! silahkan chat owner bot unruk mendapatkan key yang valid', id)
-            const check = await client.inviteInfo(link)
-            if (!isLink) return client.reply(from, 'Ini link? 👊🤬', id)
-            if (tGr.length > 15) return client.reply(from, 'Maaf jumlah group sudah maksimal!', id)
-            if (check.size < minMem) return client.reply(from, 'Member group tidak melebihi 30, bot tidak bisa masuk', id)
-            if (check.status === 200) {
-                await client.joinGroupViaLink(link).then(() => client.reply(from, 'Bot akan segera masuk!'))
-            } else {
-                client.reply(from, 'Link group tidak valid!', id)
-            }
-            break
         case '!delete':
             if (!isGroupMsg) return client.reply(from, 'Fitur ini hanya bisa di gunakan dalam group', id)
             if (!isGroupAdmins) return client.reply(from, 'Fitur ini hanya bisa di gunakan oleh admin group', id)
@@ -605,6 +586,7 @@ module.exports = msgHandler = async (client, message) => {
             const lirik = await liriklagu(lagu)
             client.reply(from, lirik, id)
             break
+
         case '!chord':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!chord [query]*, contoh *!chord aku bukan boneka*', id)
             const query__ = body.slice(7)
@@ -776,9 +758,54 @@ module.exports = msgHandler = async (client, message) => {
         case '!readme':
             client.reply(from, readme, id)
             break
-        case '!info':
+        case '!github':
             client.sendLinkWithAutoPreview(from, 'https://github.com/Bintangp02', info)
             break
+				case '!pinterest':
+					if (isBanned) return reply(dla.baned())
+					if (!isRegistered) return reply(dla.noregis())
+					if (isLimit(sender)) return reply(dla.limitend(pusname, prefix))
+					await limitAdd(sender)
+					dila.updatePresence(from, Presence.composing)
+					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${body.slice(11)}`, { method: 'get' })
+					reply(dla.wait())
+					n = JSON.parse(JSON.stringify(data));
+					nimek = n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					dila.sendMessage(from, pok, image, { quoted: Lan, caption: `*PINTEREST*` })
+					break
+	
+				case '!covid':
+					if (isBanned) return reply(dla.baned())
+					if (!isRegistered) return reply(dla.noregis())
+					if (isLimit(sender)) return reply(dla.limitend(pusname, prefix))
+					await limitAdd(sender)
+					anu = await fetchJson(`https://videfikri.com/api/covidindo/`)
+					cvd = `「 *INFO COVID* 」
+
+Negara : ${anu.result.country}
+Positif : ${anu.result.positif}
+Sembuh : ${anu.result.sembuh}
+Meninggal : ${anu.result.meninggal}`
+					dila.sendMessage(from, cvd, text, { quoted: Lan })
+					break
+case 'creategroup':
+case 'creategrup':
+			if (isBanned) return reply(dla.baned())
+					if (!isRegistered) return reply(dla.noregis())
+					if (!isGroup) return reply(dla.groupo())
+				if (args.length < 1) return reply(`Penggunaan ${prefix}creategrup nama grup|@tag member`)
+				argza = arg.split('|')
+				if (Lan.message.extendedTextMessage != undefined){
+                    mentioned = Lan.message.extendedTextMessage.contextInfo.mentionedJid
+                    for (let i = 0; i < mentioned.length; i++){
+						anu = []
+						anu.push(mentioned[i])
+                    }
+					dila.groupCreate(argza[0], anu)
+					reply(`Sukes membuat grup:\n${argza}`)
+                }
+				break
         case '!snk':
             client.reply(from, snk, id)
             break
