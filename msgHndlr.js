@@ -777,10 +777,35 @@ module.exports = msgHandler = async (client, message) => {
 //Thx
 //Bintangp02
 //MhankbarbarScori
+
+				case 'trigered':
+				case 'trigger':
+					if (isBanned) return reply(dla.baned())
+					if (!isRegistered) return reply(dla.noregis())
+					var imgbb = require('imgbb-uploader')
+					if ((isMedia && !Lan.message.videoMessage || isQuotedImage) && args.length == 0) {
+						ger = isQuotedImage ? JSON.parse(JSON.stringify(Lan).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : Lan
+						reply(dla.wait())
+						owgi = await dila.downloadAndSaveMediaMessage(ger)
+						anu = await imgbb("7f2cf4cd570b9a442d6fdec16b74dcfc", owgi)
+						trig = `${anu.display_url}`
+						ranp = getRandom('.gif')
+						rano = getRandom('.webp')
+						anu1 = `https://some-random-api.ml/canvas/triggered?avatar=${trig}`
+						exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+							fs.unlinkSync(ranp)
+							if (err) return reply('Gagal Ngab')
+							nobg = fs.readFileSync(rano)
+							dila.sendMessage(from, nobg, sticker, { quoted: Lan })
+							fs.unlinkSync(rano)
+						})
+					} else {
+						reply('Gunakan Foto Kakm')
+					}
+					break
 				case '!pinterest':
 					if (isBanned) return reply(dla.baned())
 					if (!isRegistered) return reply(dla.noregis())
-					if (isLimit(sender)) return reply(dla.limitend(pusname, prefix))
 					await limitAdd(sender)
 					dila.updatePresence(from, Presence.composing)
 					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${body.slice(11)}`, { method: 'get' })
@@ -794,7 +819,6 @@ module.exports = msgHandler = async (client, message) => {
 				case '!covid':
 					if (isBanned) return reply(dla.baned())
 					if (!isRegistered) return reply(dla.noregis())
-					if (isLimit(sender)) return reply(dla.limitend(pusname, prefix))
 					await limitAdd(sender)
 					anu = await fetchJson(`https://videfikri.com/api/covidindo/`)
 					cvd = `「 *INFO COVID* 」
