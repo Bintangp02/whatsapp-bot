@@ -67,10 +67,6 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅        |   enable or disable welcome feature|
 
 
-| Owner Group Only  |              Feature                |
-| :------------: | :---------------------------------------------: |
-|       ✅        |   Kick All Member Group                 |
-
 | Owner Bot Only  |              Feature                |
 | :------------: | :---------------------------------------------: |
 |       ✅        |   leave all group                   |
