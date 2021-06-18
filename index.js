@@ -5,7 +5,7 @@ const msgHandler = require('./msgHndlr')
 const options = require('./options')
 
 const start = async (client = new Client()) => {
-        console.log('[SERVER] Server Started!')
+        console.log('[SERVER] Jagan Lupa Subscribe BP BOT')
         // Force it to keep the current session
         client.onStateChanged((state) => {
             console.log('[Client State]', state)
