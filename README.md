@@ -5,8 +5,6 @@
 ```
 
 ## Install the dependencies:
-Before running the below command, make sure you're in the project directory that
-you've just cloned!!
 
 ```bash
 > npm install gify-cli -g
@@ -73,21 +71,12 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅        |   clear all message                 |
 |       ✅        |   Broadcast                      |
 
-
-### Troubleshooting
-Make sure all the necessary dependencies are installed.
-https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
-
-Fix Stuck on linux, install google chrome stable:
-```bash
-> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-> sudo apt install ./google-chrome-stable_current_amd64.deb
-```
 ## Special Thanks to
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
 * [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
+* [`Mhankbarbar`](https://github.com/mhankbarbar)
 
 ### Donate
-* [`Saweria`](https://saweria.co/donate/mhankbarbar)
-* [`ScOri`](https://github.com/mhankbarbar)
+* [`Saweria`](https://github.com/Bintangp02/Bintangp02)
+
