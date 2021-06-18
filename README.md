@@ -34,7 +34,7 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ❌        |   Doujin Downloader         |
 |       ✅        |   Instagram Video/Image Downloader                  |
 |       ✅        |   Facebook Video Downloader                  |
-|       ✅        |   Pinterest 🆕.                 |
+|       ✅        |   Pinterest 🆕                       |
 
 
 | Other  |                     Feature                     |
