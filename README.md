@@ -25,7 +25,7 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅       | Reply A Photo                    |
 |       ✅       | Image Url                        |
 |       ✅       | Send Video or GIF with Caption   |
-|       ✅       | Sticker triggered NEW            |
+|       ✅       | Sticker triggered 🆕             |
 
 
 | Downloader |                     Feature                |
@@ -34,7 +34,7 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ❌        |   Doujin Downloader         |
 |       ✅        |   Instagram Video/Image Downloader                  |
 |       ✅        |   Facebook Video Downloader                  |
-|       ✅        |   Pinterest NEW                  |
+|       ✅        |   Pinterest 🆕.                 |
 
 
 | Other  |                     Feature                     |
@@ -50,6 +50,7 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅        |   Anime searcher    |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
+|       ✅        |   Info Covid Indonesia 🆕       |
 |      And        |   Others...                     |
 
 
@@ -65,7 +66,7 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅        |   Get owner group               |
 |       ✅        |   enable or disable nsfw command|
 |       ✅        |   enable or disable welcome feature|
-|       ✅        |   Create a group NEW             |
+|       ✅        |   Create a group 🆕             |
 
 
 | Owner Bot Only  |              Feature                |
