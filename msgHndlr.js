@@ -1,3 +1,7 @@
+//Makasih!
+//Mhankbarbar=scori
+//Bintangp02=Pengedit
+//Jagan ngaku kalo ini punya lu!!
 const moment = require('moment-timezone')
 const get = require('got')
 const fetch = require('node-fetch')
@@ -51,11 +55,11 @@ module.exports = msgHandler = async (client, message) => {
                 Iv: '[❗] Link yang anda kirim tidak valid!'
             }
         }
-        const time = moment(t * 1000).format('DD/MM HH:mm:ss')
+        const time = moment(t * 1000).format('DD/MM HH:mm:ss')  // jam hari detik
         const botNumber = await client.getHostNumber()
         const blockNumber = await client.getBlockedIds()
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
-        const apiKey = 'xabcjkiNtZAvKyHDkdfb' // apikey you can get it at https://mhankbarbar.moe
+        const apiKey = 'API-KEY' // apikey Bisa Whatsapp wa.me/6289647417373
         const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
         const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
@@ -162,6 +166,8 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, 'Masukkan data bahasa : [id] untuk indonesia, [en] untuk inggris, [jp] untuk jepang, dan [ar] untuk arab', id)
             }
             break
+// Emang orang sekarang gak bisa nulis yak anjirr!
+// Camda
         case '!nulis':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!nulis [teks]*', id)
             const nulis = encodeURIComponent(body.slice(7))
@@ -241,6 +247,8 @@ module.exports = msgHandler = async (client, message) => {
             if (epbe.error) return client.reply(from, epbe.error, id)
             client.sendFileFromUrl(from, epbe.result, 'epbe.mp4', epbe.title, id)
             break
+// ubah aja Soal nya ini bot punya kalian!!
+// Yg lain Jagan ubah!! Eror Balikin Sendiri
         case '!creator':
             client.sendContact(from, '6289647417373@c.us')
             break
@@ -488,14 +496,17 @@ module.exports = msgHandler = async (client, message) => {
             hehe += '╚═〘 Shinomiya Kaguya BOT 〙'
             await client.sendTextWithMentions(from, hehe)
             break
-        case '!kickall':
+//Ubah aja yang bawah ini Case kickkall
+//note kalau ada yg make wa kamu bisa ke baned
+//Semua itu terserah pengguna!!
+        case 'mnbvcxxlkjhgfdsapoiuytrewq':
             if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             const isGroupOwner = sender.id === chat.groupMetadata.owner
             if (!isGroupOwner) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh Owner group', id)
             if (!isBotGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan ketika bot menjadi admin', id)
             const allMem = await client.getGroupMembers(groupId)
             for (let i = 0; i < allMem.length; i++) {
-                if (groupAdmins.includes(allMem[i].id)) {
+                if (groupOwner.includes(allMem[i].id)) {
                     console.log('Upss this is Admin group')
                 } else {
                     await client.removeParticipant(groupId, allMem[i].id)
@@ -761,6 +772,11 @@ module.exports = msgHandler = async (client, message) => {
         case '!github':
             client.sendLinkWithAutoPreview(from, 'https://github.com/Bintangp02', info)
             break
+//Bintangp02
+//recodeBintangp02
+//Thx
+//Bintangp02
+//MhankbarbarScori
 				case '!pinterest':
 					if (isBanned) return reply(dla.baned())
 					if (!isRegistered) return reply(dla.noregis())
