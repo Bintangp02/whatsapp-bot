@@ -50,7 +50,6 @@ Before running this script, first edit [this section](https://github.com/MhankBa
 |       ✅        |   Anime searcher    |
 |       ✅        |   Get a random cat images       |
 |       ✅        |   Get a random dog images       |
-
 |      And        |   Others...                     |
 
 
