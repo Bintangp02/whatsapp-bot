@@ -82,12 +82,17 @@
 |       ✅        |   clear all message                 |
 |       ✅        |   Broadcast                      |
 
-## Special Thanks to
+## Special Thanks to..
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
 * [`YogaSakti/imageToSticker`](https://github.com/YogaSakti/imageToSticker)
 * [`SomnathDas/Whatsapp-Botto-Re`](https://github.com/SomnathDas/Whatsapp-Botto-Re)
 * [`Mhankbarbar`](https://github.com/mhankbarbar)
+* [`Bintangp02`](https://github.com/Bintangp02)
 
-### Donate
-* [`Saweria`](https://github.com/Bintangp02/Bintangp02)
+### Thanks a lot to!
+```
+Mhankbarbar untuk Sc ORI
+Bintangp02 Recode
+```
 
+##### Folow My [Github](https://github.com/Bintangp02)
