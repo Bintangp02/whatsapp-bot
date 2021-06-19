@@ -20,8 +20,8 @@
 
 ## Info Update
 ```
-> ...
->
+> Antilink 
+> Set Pp Bot
 >
 ```
 ## Features
