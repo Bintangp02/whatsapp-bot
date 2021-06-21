@@ -43,16 +43,16 @@ module.exports = msgHandler = async (client, message) => {
         }
 
         const mess = {
-            wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
+            wait: '[ WARTEN ] In Bearbeitung⏳ Bitte warten Sie einen Moment',
             error: {
-                St: '[❗] Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
-                Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
-                Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
-                Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
-                Ig: '[❗] Terjadi kesalahan, mungkin karena akunnya private',
-                Ki: '[❗] Bot tidak bisa mengeluarkan admin group!',
-                Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
-                Iv: '[❗] Link yang anda kirim tidak valid!'
+                St: '[❗] Senden Sie ein Bild mit einer Bildunterschrift *!Sticker* oder markieren Sie das bereits gesendete Bild',
+                Qm: '[❗] Ein Fehler ist aufgetreten, vielleicht ist das Thema nicht verfügbar!',
+                Yt3: '[❗] Ein Fehler ist aufgetreten, kann nicht in mp3 konvertiert werden!',
+                Yt4: '[❗] Ein Fehler ist aufgetreten, möglicherweise wurde der Fehler vom System verursacht.',
+                Ig: '[❗] Ein Fehler ist aufgetreten, vielleicht weil das Konto privat ist',
+                Ki: '[❗] Bot kann Admin nicht entfernen!',
+                Ad: '[❗] Ziel kann nicht hinzugefügt werden, vielleicht weil es privat ist',
+                Iv: '[❗] Der von Ihnen gesendete Link ist nicht gültig!'
             }
         }
         const time = moment(t * 1000).format('DD/MM HH:mm:ss')  // jam hari detik
@@ -250,13 +250,13 @@ module.exports = msgHandler = async (client, message) => {
 // ubah aja Soal nya ini bot punya kalian!!
 // Yg lain Jagan ubah!! Eror Balikin Sendiri
         case '!creator':
-            client.sendContact(from, '6289647417373@c.us')
+            client.sendContact(from, '4915678406116@c.us')
             break
         case '!bot':
-            client.sendContact(from, '62896474173739@c.us')
+            client.sendContact(from, '4915678406116@c.us')
             break
         case '!owner':
-            client.sendContact(from, '6289647417373@c.us')
+            client.sendContact(from, '4915678406116@c.us')
             break
         case '!ig':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!ig [linkIg]* untuk contoh silahkan kirim perintah *!readme*')
@@ -291,19 +291,19 @@ module.exports = msgHandler = async (client, message) => {
             }
             break
         case '!welcome':
-            if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            if (!isGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh Admin group!', id)
-            if (args.length === 1) return client.reply(from, 'Pilih enable atau disable!', id)
+            if (!isGroupMsg) return client.reply(from, 'Dieser Befehl kann nur in Gruppen verwendet werden!', id)
+            if (!isGroupAdmins) return client.reply(from, 'Dieser Befehl kann nur von der Admin-Gruppe verwendet werden!', id)
+            if (args.length === 1) return client.reply(from, 'Wählen Sie aktivieren oder deaktivieren!', id)
             if (args[1].toLowerCase() === 'enable') {
                 welkom.push(chat.id)
                 fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
-                client.reply(from, 'Fitur welcome berhasil di aktifkan di group ini!', id)
+                client.reply(from, 'Die Willkommensfunktion wurde in dieser Gruppe erfolgreich aktiviert!', id)
             } else if (args[1].toLowerCase() === 'disable') {
                 welkom.splice(chat.id, 1)
                 fs.writeFileSync('./lib/welcome.json', JSON.stringify(welkom))
-                client.reply(from, 'Fitur welcome berhasil di nonaktifkan di group ini!', id)
+                client.reply(from, 'Die Willkommensfunktion wurde in dieser Gruppe erfolgreich deaktiviert!', id)
             } else {
-                client.reply(from, 'Pilih enable atau disable 🙂', id)
+                client.reply(from, 'Wählen Sie aktivieren oder deaktivieren 🙂', id)
             }
             break
         case '!nsfwmenu':
@@ -849,7 +849,7 @@ case 'creategrup':
         case '!snk':
             client.reply(from, snk, id)
             break
-        const ownerNumber = ["6289647417373@c.us","62896474173739"] // replace with your whatsapp number
+        const ownerNumber = ["4915678406116@c.us"] // replace with your whatsapp number
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
