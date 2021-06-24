@@ -22,9 +22,9 @@
 ```
 > Fix ytplay
 > Fitur Clone Sudah Hadir
-> Akan hadir fitur getvn [segera hadir]
->
->
+> Segera hadir fitur getvn
+> anti delete
+> Fitur hadir secara bertahab🙏
 ```
 ## Features
 
@@ -85,7 +85,9 @@
 | :------------: | :---------------------------------------------: |
 |       ❌        |   leave all group                   |
 |       ✅        |   clear all message                 |
-|       ✅        |   Broadcast                      |
+|       ✅        |   Broadcast
+|       ✅.       |                                |
+                  
 
 ## Special Thanks to..
 * [`open-wa/wa-automate-nodejs`](https://github.com/open-wa/wa-automate-nodejs)
