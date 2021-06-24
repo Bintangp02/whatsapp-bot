@@ -86,7 +86,7 @@
 |       ❌        |   leave all group                   |
 |       ✅        |   clear all message                 |
 |       ✅        |   Broadcast
-|       ✅.       |                                |
+|       ✅        |                                |
                   
 
 ## Special Thanks to..
