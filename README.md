@@ -18,10 +18,12 @@
 > npm start
 ```
 
-## Info Update
+## Info Update & Fix
 ```
-> Antilink 
-> Set Pp Bot
+> Fix ytplay
+> Fitur Clone Sudah Hadir
+> Akan hadir fitur getvn [segera hadir]
+>
 >
 ```
 ## Features
@@ -41,7 +43,9 @@
 |       ❌        |   Doujin Downloader         |
 |       ✅        |   Instagram Video/Image Downloader                  |
 |       ✅        |   Facebook Video Downloader                  |
-|       ✅        |   Pinterest 🆕                       |
+|       ✅        |   Pinterest 🆕                         |
+|       ✅        |   Yt Play 🆕                         |
+
 
 
 | Other  |                     Feature                     |
@@ -73,7 +77,8 @@
 |       ✅        |   Get owner group               |
 |       ✅        |   enable or disable nsfw command|
 |       ✅        |   enable or disable welcome feature|
-|       ✅        |   Create a group 🆕             |
+|       ✅        |   Create a group 🆕                |
+|       ✅        |   Clone tag user 🆕                         |
 
 
 | Owner Bot Only  |              Feature                |
