@@ -1,7 +1,9 @@
-//Makasih!
-//Mhankbarbar=scori
-//Bintangp02=Pengedit
-//Jagan ngaku kalo ini punya lu!!
+/*Makasih!
+Mhankbarbar=scori
+Bintangp02=Pengedit
+Jagan ngaku kalo ini punya lu!!
+*/
+
 const moment = require('moment-timezone')
 const get = require('got')
 const fetch = require('node-fetch')
@@ -55,11 +57,12 @@ module.exports = msgHandler = async (client, message) => {
                 Iv: '[❗] Link yang anda kirim tidak valid!'
             }
         }
-        const time = moment(t * 1000).format('DD/MM HH:mm:ss')  // jam hari detik
+        const time = moment(t * 1000).format('DD/MM HH:mm:ss') 
         const botNumber = await client.getHostNumber()
         const blockNumber = await client.getBlockedIds()
         const groupId = isGroupMsg ? chat.groupMetadata.id : ''
         const apiKey = 'API-KEY' // apikey Bisa Whatsapp wa.me/6289647417373
+        const LolKey = 'fcd0237271d08db893a92b72'//Beli aja Bruh geratisan ngak modal lu:v
         const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
         const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
@@ -136,6 +139,48 @@ module.exports = msgHandler = async (client, message) => {
         case '!donate':
             client.sendLinkWithAutoPreview(from, 'Subsribe- BP BOT OFFICIAL', donate)
             break
+				case 'clone':
+				if (!isGroup) return reply(btg.groupo)
+				if (!isOwner) return reply(btg.ownerb)
+				if (args.length < 1) return reply('TAG YANG MAU DI CLONE KA')
+				if (btg.message.extendedTextMessage === undefined || btg.message.extendedTextMessage === null) return reply('Tag siapa gitu lah:v')
+				mentioned = btg.message.extendedTextMessage.contextInfo.mentionedJid[0]
+				let { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
+				try {
+				pp = await btg.getProfilePicture(id)
+				buffer = await getBuffer(pp)
+				bintang.updateProfilePicture(botNumber, buffer)
+				mentions(`Foto profile Berhasil di perbarui menggunakan foto profile @${id.split('@')[0]}`, [jid], true)
+				} catch (e) {
+				reply(btg.stikga)
+				}
+				await limitAdd(sender)
+				break
+                case 'ytplay':
+				if (!isVerify) return reply(btg.noregis)
+				if (isBanned) return reply(btg.baned)
+				if (isLimit(sender)) return reply(btg.limitend)
+                if (args.length < 1) return reply(`judul mana broh?\ncontoh : ${prefix + command} Melukis Senja`)
+                reply(wait)
+                query = args.join(' ')
+                get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytplay?apikey=${LolKey}&query=${query}`)
+                get_result = get_result.result
+                get_info = get_result.info
+                ini_txt = `Title : ${get_info.title}\n`
+                ini_txt += `Uploader : ${get_info.uploader}\n`
+                ini_txt += `Duration : ${get_info.duration}\n`
+                ini_txt += `View : ${get_info.view}\n`
+                ini_txt += `Like : ${get_info.like}\n`
+                ini_txt += `Dislike : ${get_info.dislike}\n`
+                ini_txt += `Description :\n ${get_info.description}\n\n\n`
+                ini_buffer = await getBuffer(get_info.thumbnail)
+                Ruri.sendMessage(from, ini_buffer, image, { quoted: freply, caption: ini_txt })
+                get_audio = await getBuffer(get_result.audio[3].link)
+                btg.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_info.title}.mp3`, quoed: freply})
+                get_video = await getBuffer(get_result.video[0].link)
+                btg.sendMessage(from, get_video, video, { mimetype: 'video/mp4', filename: `${get_info.title}.mp4`, quoed: freply})
+                await limitAdd(sender)
+                break
         case '!tts':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
             const ttsId = require('node-gtts')('id')
@@ -200,7 +245,7 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, mess.error.Yt3, id)
             }
             break
-        case '!ytmp4':
+/*        case '!ytmp4':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!ytmp4 [linkYt]*, untuk contoh silahkan kirim perintah *!readme*')
             let isLin = args[1].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
             if (!isLin) return client.reply(from, mess.error.Iv, id)
@@ -218,7 +263,7 @@ module.exports = msgHandler = async (client, message) => {
                 client.sendText(ownerNumber[0], 'Error ytmp4 : '+ er)
                 client.reply(from, mess.error.Yt4, id)
             }
-            break
+            break*/
         case '!wiki':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!wiki [query]*\nContoh : *!wiki lelelawar*', id)
             const query_ = body.slice(6)
