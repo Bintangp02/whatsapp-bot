@@ -76,6 +76,7 @@ module.exports = msgHandler = async (client, message) => {
         //if (!isGroupMsg && !command.startsWith('!')) console.log('\x1b[1;33m~\x1b[1;37m>', '[\x1b[1;31mMSG\x1b[1;37m]', time, color(body), 'from', color(pushname))
         //if (isGroupMsg && !command.startsWith('!')) console.log('\x1b[1;33m~\x1b[1;37m>', '[\x1b[1;31mMSG\x1b[1;37m]', time, color(body), 'from', color(pushname), 'in', color(formattedTitle))
         if (isBlocked) return
+        if (islimi
         //if (!isOwner) return
         switch(command) {
         case '!sticker':
@@ -156,8 +157,22 @@ module.exports = msgHandler = async (client, message) => {
 				}
 				await limitAdd(sender)
 				break
+            if (chat.action == 'add') {
+            	ini_user = nayla.contacts[mem]
+                group_info = await nayla.groupMetadata(chat.jid)
+                ini_img = await getBuffer(`https://api.lolhuman.xyz/api/base/welcome?apikey=e966d3aac613b61dabd35cc6&img1=${pp_user}&img2=${pp_group}&background=${img}&username=${ini_user.notify}&member=${group_info.participants.length}&groupname= ${group_info.subject}`)
+                welkam = `Hi @${mem.split('@')[0]}\n`
+				welkam += `◪ Welcome in group:\n`
+				welkam += `├─ ${group_info.subject}\n`
+				welkam += `├─ Please introduce yourself\n`
+				welkam += `├─ ❏ Name:\n`			
+				welkam += `├─ ❏ Age: \n`
+				welkam += `├─ ❏ Country: \n`
+				welkam += `├─ ❏ Gender:\n`
+				welkam += `└─ ❏ Number: ${mem.replace('@s.whatsapp.net', '')}\n`
+				welkam += `We hope you enjoy~~\n`
+                await nayla.sendMessage(chat.jid, ini_img, MessageType.image, { caption: welkam })
                 case 'ytplay':
-				if (!isVerify) return reply(btg.noregis)
 				if (isBanned) return reply(btg.baned)
 				if (isLimit(sender)) return reply(btg.limitend)
                 if (args.length < 1) return reply(`judul mana broh?\ncontoh : ${prefix + command} Melukis Senja`)
@@ -180,7 +195,28 @@ module.exports = msgHandler = async (client, message) => {
                 get_video = await getBuffer(get_result.video[0].link)
                 btg.sendMessage(from, get_video, video, { mimetype: 'video/mp4', filename: `${get_info.title}.mp4`, quoed: freply})
                 await limitAdd(sender)
-                break
+                break  
+          if (anu.action == 'add') {
+         	img = await getBuffer(`https://servant-of-evil.herokuapp.com/api/swiftlite/welkom?nama=${encodeUrl(namaewa)}&gc=${encodeUrl(mdata.subject)}&ppgc=${shortgc.data}&pp=${shortpc.data}&bg=${imgibb}&member=${mdata.participants.length}&apikey=GFL`)
+            teks = `Hai ${namaewa}\n◪ Welcome in group:\n├─ ${mdata.subject}\n\n├─ Intro dulu\n├─ ❏ Nama: \n├─ ❏ Umur: \n├─ ❏ Asal kota: \n├─ ❏ Kelas: \n├─ ❏ Jenis kelamin: \n└─ ❏ Nomor: ${num.replace('@s.whatsapp.net', '')}\nSemoga Betah yaa~~\n${ini_user.notify}`
+            Ruri.sendMessage(mdata.id, img, MessageType.image, {caption: teks, contextInfo: {'mentionedJid': [num]} })
+            } else if (anu.action == 'remove') {
+         	img = await getBuffer(`https://servant-of-evil.herokuapp.com/api/swiftlite/goodbye?nama=${encodeUrl(namaewa)}&gc=${encodeUrl(mdata.subject)}&ppgc=${shortgc.data}&pp=${shortpc.data}&bg=${imgibb}&member=${mdata.participants.length}&apikey=GFL`)
+            teks = `◪ Dadah jasa kmu akan kami kenang kok ${namaewa}\n◪ Leave from group:\n${mdata.subject}\n\n└─ ❏ Nomor: ${num.replace('@s.whatsapp.net', '')}\nGoodBye~~`
+            Bintang.sendMessage(mdata.id, img, MessageType.image, {caption: teks, contextInfo: {'mentionedJid': [num]}})
+            } else if (anu.action == 'promote') {
+            img = await getBuffer(`http://hadi-api.herokuapp.com/api/card/promote?nama=${encodeUrl(namaewa)}&member=${member}&pesan=Selamat anda menjadi admin group!&pp=${shortpc.data}&bg=${imgibb}`)
+            teks = `◪ PROMOTE DETECT\n\n├─ Nomor: ${num.replace('@s.whatsapp.net', '')}\n├─ Pesan: Selamat anda menjadi babu deriss group!\n└─ ❏ @${num.split('@')[0]}`
+            Bintang.sendMessage(mdata.id, img, MessageType.image, {caption: teks, contextInfo: {'mentionedJid': [num]}})
+            } else if (anu.action == 'demote') {
+            img = await getBuffer(`http://hadi-api.herokuapp.com/api/card/demote?nama=${encodeUrl(namaewa)}&member=${member}&pesan=di unadmin wkwkwk&pp=${shortpc.data}&bg=${imgibb}`)
+            teks = `◪ DEMOTE DETECT\n\n\n├─ Nomor: ${num.replace('@s.whatsapp.net', '')}\n├─ Pesan: Awokawok di unadmin, mampus:v\n└─ ❏ @${num.split('@')[0]}`
+            Ruri.sendMessage(mdata.id, img, MessageType.image, {caption: teks, contextInfo: {'mentionedJid': [num]}})
+         }
+     } catch (e) {
+         console.log('Error : %s', color(e, 'red'))
+      }
+})
         case '!tts':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
             const ttsId = require('node-gtts')('id')
