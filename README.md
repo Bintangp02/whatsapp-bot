@@ -32,7 +32,7 @@ MAINTENANCE!!
 > anti delete
 > Fitur hadir secara bertahab🙏
 ```
-## Features
+/*## Features
 
 | Sticker Creator |                Feature           |
 | :-----------: | :--------------------------------: |
@@ -109,3 +109,4 @@ Bintangp02 Recode
 ```
 
 ##### Folow My [Github](https://github.com/Bintangp02)
+*/
