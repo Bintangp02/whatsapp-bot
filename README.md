@@ -36,7 +36,7 @@ you've just cloned!!
 > npm start
 ```
 
-### Settings
+/*### Settings
 ```json
 {
 	"prefix": ".",
@@ -81,7 +81,7 @@ you've just cloned!!
 |       ✅        |   Set Prefix                     |
 |       ✅        |   Broadcast                      |
 |       ✅        |   Clear All Chats                |
-
+*/
 ## Special Thanks to
 * <a href="https://github.com/adiwajshing/Baileys"><img alt="GitHub" src="https://img.shields.io/badge/adiwajshing/Baileys%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
 
