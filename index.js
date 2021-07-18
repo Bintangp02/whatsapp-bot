@@ -56,7 +56,7 @@ yt = setting.yt
 grub= setting.grub
 apikey = gw.apikey
 auth0r = gw.auth0r
-prefix = setting.prefix
+prefix = sett.pre
 limitawal = 99
 blocked = []
 botname = setting.botname
@@ -71,7 +71,7 @@ bintang = setting.bintang
 namebot = setting.namebot
 ownerNumber = setting.ownerNumber
 ownername = setting.ownername
-l0lhuman = setting.l0lhuman //ubah pke apilu sendiri biar limit nya gk cepat abis
+l0lhuman = 'e966d3aac613b61dabd35cc6' //ubah pke apilu sendiri biar limit nya gk cepat abis
 Alphakey = 'Alphabot' //apikey alphabot gk usah di ganti su
 petik = '```'
 titik = '...'
@@ -164,5 +164,504 @@ bintang.on("CB:Call", json => {
 			const isWelkom = isGroup ? welkom.includes(from) : false			 
 			const isAntijawa = isGroup ? antijawa.includes(from) : false
 
+/*
+Jagan numpang nama doang bruh !!
+*/
+const vcard = 'BEGIN:VCARD\n' 
+            + 'VERSION:3.0\n' 
+            + `FN:Bintangp02\n` //nama lu bruh
+            + `ORG: Pengembang Bot;\n` //desk tentang lu
+            + `TEL;type=CELL;type=VOICE;waid=6289647417373:6289647417373\n` //no WhatsApp
+            + 'END:VCARD' /*
+Jagan ubah ya selain itu nanti bisa jadi error*/
+/*
+Ini antilink*/           
+            if (messagesC.includes("https://")){
+					if (!isGroup) return
+					if (!isAntiLink) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinadmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Link Group Detected maaf ${sender.split("@")[0]} anda akan di kick dari group 5  seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 s")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+//Demote dan Promote
+		    	case 'demote':  
+                    if (!isElite) return reply(mess.only.userB)
+			        if (isLimit(sender)) return
+			        await limitAdd(sender)
+					if (!isGroup) return reply('GRUB ONLY')
+					if (!isGroupAdmins) return reply('LU ADMIN??')
+					if (!isBotGroupAdmins) return reply('BOT BUKAN ADMIN')
+					if (nay.message.extendedTextMessage === undefined || nay.message.extendedTextMessage === null) return reply('tag member')
+					mentioned = nay.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+					teks = ''
+					for (let _ of mentioned) {
+					teks += `*jabatan kamu di copot*🏃 :\n`
+					teks += `@_.split('@')[0]`
+					}
+					mentions(teks, mentioned, true)
+					nayla.groupDemoteAdmin(from, mentioned)
+					} else {
+					mentions(`yahhh @${mentioned[0].split('@')[0]} lu bukan admin lagi bro :(`, mentioned, true)
+					nayla.groupDemoteAdmin(from, mentioned)
+					}					 
+					break
+		case 'promote':  
+                    if (!isElite) return reply(mess.only.userB)
+			        if (isLimit(sender)) return
+			        await limitAdd(sender)
+					if (!isGroup) return reply('GRUB ONLY')
+					if (!isGroupAdmins) return reply('ONLY ADMIN')
+					if (!isBotGroupAdmins) return reply('BOT NOT ADMIN')
+					if (nay.message.extendedTextMessage === undefined || nay.message.extendedTextMessage === null) return reply('tag member')
+					mentioned = nay.message.extendedTextMessage.contextInfo.mentionedJid
+					if (mentioned.length > 1) {
+					teks = ''
+					for (let _ of mentioned) {
+					teks += `𝗦𝗲𝗹𝗮𝗺𝗮𝘁🥳 𝗮𝗻𝗱𝗮 𝗻𝗮𝗶𝗸 𝗺𝗲𝗻𝗷𝗮𝗱𝗶 𝗮𝗱𝗺𝗶𝗻 𝗴𝗿𝗼𝘂?? (+_+) :\n`
+					teks += `@_.split('@')[0]`
+					}
+					mentions(teks, mentioned, true)
+					nayla.groupMakeAdmin(from, mentioned)
+			 	    } else {
+					mentions(`??𝗲𝗹𝗮𝗺𝗮𝘁🥳 @${mentioned[0].split('@')[0]} *anda naik menjadi admin group* (+_+)`, mentioned, true)
+					nayla.groupMakeAdmin(from, mentioned)
+					}					 
+					break	                     
+//brainly
+			    	case 'brainly':
+			    	if (!isElite) return reply(mess.only.userB)
+			        if (isLimit(sender)) return
+			        await limitAdd(sender)  
+			    	anu = await fetchJson(`https://xteam.xyz/brainly?soal=${body.slice(9)}&APIKEY=${apixteam}`)
+			    	anu1 = `➻ *JAWABAN* : ${anu.jawaban}`
+			    	reply(anu1)
+			    	break
+//Auto kick
 
-
+                    if (budy.includes("syg")){
+					if (!isGroup) return
+					if (!isAntigay) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinadmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Guy Detected sorry ${sender.split("@")[0]} anda akan di kick dari group 5 seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 second")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+                    default:            
+                
+                    if (budy.includes("syg")){
+					if (!isGroup) return
+					if (!isAntigay) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinadmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Guy Detected sorry ${sender.split("@")[0]} anda akan di kick dari group 5 seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 second")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				     
+				    if (budy.includes("ayan")){
+					if (!isGroup) return
+					if (!isAntigay) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Guy Detected sorry ${sender.split("@")[0]} anda akan di kick dari group 5 seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("love")){
+					if (!isGroup) return
+					if (!isAntigay) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Guy Detected sorry ${sender.split("@")[0]} anda akan di kick dari group 5 seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("ayuk")){
+					if (!isGroup) return
+					if (!isAntibocil) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Children Detected sorry ${sender.split("@")[0]} anda akan di kick dari group 5 seconds lagi`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("chan")){
+					if (!isGroup) return
+					if (!isAntiwibu) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Wibu Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => { 
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("yamete")){
+					if (!isGroup) return
+					if (!isAntiwibu) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Wibu Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("ambe")){
+					if (!isGroup) return
+					if (!isAntijawa) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Java Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("tempek")){
+					if (!isGroup) return
+					if (!isAntijawa) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Java Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("matamu")){
+					if (!isGroup) return
+					if (!isAntijawa) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Java Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("jancok")){
+					if (!isGroup) return
+					if (!isAntijawa) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Java Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+				    if (budy.includes("aing")){
+					if (!isGroup) return
+					if (!isAntijawa) return
+					if (isGroupAdmins) return reply('Because you are an admin the bot will not remove you')
+					if (!isBotGroupAdmins) return reply(`Saya bukan admin kak`)
+					nayla.updatePresence(from, Presence.composing)
+					if (messagesC.includes("#izinmin")) return reply("```Permission Received```")
+					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
+					reply(`Java Detected Sorry ${sender.split("@")[0]} you will be kicked from the group in 5 seconds`)
+					setTimeout( () => {
+					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
+					}, 5000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("1 seconds")
+					}, 4000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("2 seconds")
+					}, 3000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("3 seconds")
+					}, 2000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("4 seconds")
+					}, 1000)
+					setTimeout( () => {
+					nayla.updatePresence(from, Presence.composing)
+					reply("5 seconds")
+					}, 0)
+				    }
+//Lanjut besok :)
