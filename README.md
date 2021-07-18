@@ -1,3 +1,4 @@
+### Fitur² Baru akan Segera Hadir !!
 <p align="center">
 <img src="https://github.com/Bintangp02/whatsapp-bot/blob/main/img/5.jpg"
 </p>
