@@ -17,7 +17,7 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./bintang/color')
 const speed = require('performance-now')
-const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./bintang/functions')
 const { fetchJson, fetchText } = require('./bintang/fetcher')
 const fetch = require('node-fetch');
 const request = require('request')
