@@ -667,4 +667,12 @@ Ini antilink*/
 				    if (budy.includes("cekprefix")){
 				    reply(`BOT PREFIX ${prefix}`)
 				    }
-//Lanjut besok :)
+//Nambah Fitur² bot?? Lanjut besok:)
+
+              }   
+		} catch (e) {
+			console.log('GppKok : %s', color(e, 'aqua'))
+		}
+	})
+}
+starts()
