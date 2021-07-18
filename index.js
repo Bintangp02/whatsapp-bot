@@ -664,4 +664,7 @@ Ini antilink*/
 					reply("5 seconds")
 					}, 0)
 				    }
+				    if (budy.includes("cekprefix")){
+				    reply(`BOT PREFIX ${prefix}`)
+				    }
 //Lanjut besok :)
