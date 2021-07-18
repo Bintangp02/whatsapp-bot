@@ -31,7 +31,7 @@ const { nyz } = require('./private')
 const imgbb = require('imgbb-uploader')  
 const clc = require('chalk')
 const imageToBase64 = require('image-to-base64');
-const setting = JSON.parse(fs.readFileSync('./bintang/settings.json'))
+/*const setting = JSON.parse(fs.readFileSync('./bintang/settings.json'))*/
 const nayz = JSON.parse(fs.readFileSync('./bintang/tes.json'))
 
 const { 
