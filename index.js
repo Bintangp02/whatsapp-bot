@@ -76,3 +76,40 @@ Alphakey = 'Alphabot' //apikey alphabot gk usah di ganti su
 petik = '```'
 titik = '...'
 n = '\n'
+
+const _Elite = JSON.parse(fs.readFileSync('./nayla/Elite.json')) 
+
+const setiker = JSON.parse(fs.readFileSync('./src/stik.json'))
+
+const videonye = JSON.parse(fs.readFileSync('./bintang/video.json'))
+const audionye = JSON.parse(fs.readFileSync('./bintang/audio.json'))
+const imagenye = JSON.parse(fs.readFileSync('./bintang/image.json')) 
+const antilink = JSON.parse(fs.readFileSync('./bintang/antilink.json'))
+const event = JSON.parse(fs.readFileSync('./bintang/event.json'))
+const antiwibu = JSON.parse(fs.readFileSync('./bintang/antiwibu.json'))
+const antijawa = JSON.parse(fs.readFileSync('./bintang/antijawa.json'))
+const prem = JSON.parse(fs.readFileSync('./bintang/prem.json'))
+const welkom = JSON.parse(fs.readFileSync('./bintang/welkom.json'))
+const antigay = JSON.parse(fs.readFileSync('./bintang/antigay.json'))
+const antibocil = JSON.parse(fs.readFileSync('./bintang/antibocil.json'))
+const _limit = JSON.parse(fs.readFileSync('./bintang/limit.json'))
+const botx = JSON.parse(fs.readFileSync('./bintang/botx.json'))
+const ban = JSON.parse(fs.readFileSync('./bintang/banned.json')) 
+const nayXi = JSON.parse(fs.readFileSync('./bintang/nayXi.json')) 
+const _leveling = JSON.parse(fs.readFileSync('./bintang/leveling.json'))
+const _level = JSON.parse(fs.readFileSync('./bintang/level.json'))
+const nayXix = JSON.parse(fs.readFileSync('./bintang/nayXix.json')) 
+
+
+            async function starts() {
+        	const nayla = new WAConnection()
+            nayla.version = [2, 2119, 6] 
+	        nayla.logger.level = 'warn'
+	       console.log(banner.string)
+	nayla.on('qr', () => {
+     		console.log(color('[','white'), color('!','red'), color(']','white'), color('SUBSCRIBE\nYOUTUBE\nBPBOT...'))
+	        })
+	        fs.existsSync('./bintang.json') && nayla.loadAuthInfo('./bintang.json')
+	        nayla.on('connecting', () => {
+		    start('2', 'Subscribe YouTube BP BOT...')		   
+        	})
