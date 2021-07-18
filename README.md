@@ -35,6 +35,52 @@ you've just cloned!!
 ```bash
 > npm start
 ```
+### Settings
+```json
+{
+	"prefix": ".",
+	"ownerNumber": "62858xxxxx",
+	"apiKey": "Your ApiKey here" (api mhankbarbar)
+        "apikey2": "your Apikey here" (api bintang)
+}
+```
+
+## Features
+
+| Sticker Creator |                Feature           |
+| :-----------: | :--------------------------------: |
+|       ✅       | Send Photo with Caption          |
+|       ✅       | Reply A Photo                    |
+|       ✅       | Reply A Video or GIF             |
+|       ✅       | Send Video or GIF with Caption   |
+|       ✅       | Reply A Sticker ( sticker to image ) |
+
+| Other  |                     Feature                     |
+| :------------: | :---------------------------------------------: |
+|       ✅        |   Get a random meme       (segera hadir)      |
+|       ✅        |   Text to speech       (segera hadir)         |
+|       ✅        |   Writing feature 		(segera hadir)		|
+|       ✅        |   What Anime Is This 			|
+|       ✅        |   Url2Img ( Screeenshot Web ) (segera hadir)  |
+|       ✅        |   Simsimi	(segera hadir)	                |
+
+| Group  |                     Feature               |
+| :-----------: | :--------------------------------: |
+|       ✅        |   Tagall/Mentionall member (segera hadir)      |
+|       ✅        |   Tagall2/Mentionall member (segera hadir)      |
+|       ✅        |   Tagall3/Mentionall member (segera hadir)  |
+|       ✅        |   Kick Member Group	             |
+|       ✅        |   Add Member Group	             |
+|       ✅        |   Get List Admins Group          |
+|       ✅        |   Get Group Invite Link          |
+|       ✅        |   Bot leave the group            |
+
+| Owner Bot  |                     Feature           |
+| :-----------: | :--------------------------------: |
+|       ✅        |   Set Prefix                     |
+|       ✅        |   Broadcast (segera hadir)                     |
+|       ✅        |   Clear All Chats (segera hadir)               |
+
 
 ## Special Thanks to
 * <a href="https://github.com/adiwajshing/Baileys"><img alt="GitHub" src="https://img.shields.io/badge/adiwajshing/Baileys%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
