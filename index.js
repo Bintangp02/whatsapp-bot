@@ -46,7 +46,7 @@ const {
 	addLevelingLevel,
 	addLevelingId
 } = require('./bintang/level.js')
-
+/*
 img = setting.img
 baper = 'SUB YT BP BOT'
 apiku = 'api-alphabot.herokuapp.com'
@@ -99,7 +99,7 @@ const nayXi = JSON.parse(fs.readFileSync('./bintang/nayXi.json'))
 const _leveling = JSON.parse(fs.readFileSync('./bintang/leveling.json'))
 const _level = JSON.parse(fs.readFileSync('./bintang/level.json'))
 const nayXix = JSON.parse(fs.readFileSync('./bintang/nayXix.json')) 
-
+*/
 
             async function starts() {
         	const nayla = new WAConnection()
@@ -113,3 +113,56 @@ const nayXix = JSON.parse(fs.readFileSync('./bintang/nayXix.json'))
 	        nayla.on('connecting', () => {
 		    start('2', 'Subscribe YouTube BP BOT...')		   
         	})
+bintang.on("CB:Call", json => {
+		let call;
+		calling = JSON.parse(JSON.stringify(json))
+		call = calling[1].from
+		setTimeout(function(){
+			nayla.sendMessage(call, 'Maaf, saya tidak bisa menerima panggilan. nelfon = block!.\nJika ingin membuka block harap chat Owner!\nhttps//wa.me/628964741737', MessageType.text)
+			.then(() => bintang.blockUser(call, "add"))
+			}, 100);
+		})
+            if (chat.action == 'add') {
+            	ini_user = nayla.contacts[mem]
+                group_info = await nayla.groupMetadata(chat.jid)
+                let buff = await getBuffer(pp_user)
+                ini_img = await getBuffer(`https://api.lolhuman.xyz/api/base/welcome?apikey=e966d3aac613b61dabd35cc6&img1=${pp_user}&img2=${pp_group}&background=${img}&username=${ini_user.notify}&member=${group_info.participants.length}&groupname= ${group_info.subject}`)
+                welkam = `*Hi @${mem.split('@')[0]}*${n}`
+				welkam += `*◪ Welcome in group:*${n}`
+				welkam += `*├─ ${group_info.subject}*${n}`
+				welkam += `*├─ Intro Dulu Kak*${n}`
+				welkam += `*├─ ❏ Nama :*${n}`			
+				welkam += `*├─ ❏ Umur :* ${n}`
+				welkam += `*├─ ❏ Hobi :*${n}`
+				welkam += `*├─ ❏ Jenis Kelamin :*${n}`
+				welkam += `*└─ ❏ Nomor :* ${mem.replace('@s.whatsapp.net', '')}${n}`
+				welkam += `*We hope you enjoy~~*${n}${n}${group_info.desc}`
+				ucapan_welkam = `*Hi @${mem.split('@')[0]}*${n}*◪ Welcome in group:*${n}*├─ ${group_info.subject}*${n}*├─ Intro Dulu Kak*${n}*├─ ❏ Nama :*${n}*├─ ❏ Umur :* ${n}*├─ ❏ Hobi :*${n}*├─ ❏ Jenis Kelamin :*${n}*└─ ❏ Nomor :* ${mem.replace('@s.whatsapp.net', '')}${n}*Semoga betah~~*${n}${n}${group_info.desc}`
+                await nayla.sendMessage(chat.jid, buff, MessageType.image, { quoted: falfa, caption: ucapan_welkam , contextInfo: {"mentionedJid": [mem],"forwardingScore":999,"isForwarded":true},sendEphemeral: true})
+            }
+            if (chat.action == 'remove') {
+            	mem = chat.participants[0]
+            	ini_user = nayla.contacts[mem]
+                let buff = await getBuffer(pp_user)
+                group_info = await nayla.groupMetadata(chat.jid)
+                ini_img = await getBuffer(`https://api.lolhuman.xyz/api/base/leave?apikey=e966d3aac613b61dabd35cc6&img1=${pp_user}&img2=${pp_group}&background=${img}&username=${ini_user.notify}&member=${group_info.participants.length}&groupname= ${group_info.subject}`)
+                ini_out = `Bye bye🥳 @${mem.split('@')[0]} dadahh👋`
+                ucapan_leave = `Bye bye🥳 @${mem.split('@')[0]} dadahh👋`
+                await nayla.sendMessage(chat.jid, buff, MessageType.image, { quoted: falfa, caption: ucapan_leave, contextInfo: {"mentionedJid": [mem],"forwardingScore":999,"isForwarded":true},sendEphemeral: true })
+            }
+        } catch (e) {
+            console.log('Error :', e)
+        }
+    })
+                        //Bintang bot subs yt BPBOT yy
+                        const isGroupAdmins = groupAdmins.includes(sender) || false
+                        const isAntiLink = isGroup ? antilink.includes(from) : false
+			const isEventon = isGroup ? event.includes(from) : false
+			const isAntigay = isGroup ? antigay.includes(from) : false
+			const isAntibocil = isGroup ? antibocil.includes(from) : false
+			const isAntiwibu = isGroup ? antiwibu.includes(from) : false
+			const isWelkom = isGroup ? welkom.includes(from) : false			 
+			const isAntijawa = isGroup ? antijawa.includes(from) : false
+
+
+
