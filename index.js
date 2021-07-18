@@ -1,45 +1,36 @@
-const lolcatjs = require('lolcatjs')
-const figlet = require('figlet')
-let { spawn } = require('child_process')
-let path = require('path')
-const CFonts  = require('cfonts')
+const {
+		WAConnection,
+		MessageType,
+		Presence,
+		MessageOptions,
+		Mimetype,
+		WALocationMessage,
+		WA_MESSAGE_STUB_TYPES,
+		WA_DEFAULT_EPHEMERAL,
+		ReconnectMode,
+		WAMessageProto,
+		ProxyAgent,
+		GroupSettingChange,
+		waChatKey,
+		mentionedJid,
+		processTime,
+} = require('@adiwajshing/baileys')
+const { color, bgcolor } = require('./lib/color')
+const speed = require('performance-now')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { fetchJson, fetchText } = require('./lib/fetcher')
+const fetch = require('node-fetch');
+const request = require('request')
+const { recognize } = require('./lib/ocr')
+const fs = require('fs')
+const crypto = require('crypto')  
+const moment = require('moment-timezone')
+const { exec, spawn, execSync } = require("child_process")  
+const ffmpeg = require('fluent-ffmpeg') 
+const { nyz } = require('./private')
+const imgbb = require('imgbb-uploader')  
+const clc = require('chalk')
+const imageToBase64 = require('image-to-base64');
+const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
+const nayz = JSON.parse(fs.readFileSync('./lib/tes.json'))
 
-lolcatjs.options.seed = Math.round(Math.random() * 1000);
-lolcatjs.options.colors = true;
-
-CFonts.say('[ROOT] STARTING BOT...', {
-font: 'console',
-align: 'left',
-gradient: ['magenta', 'red']
-})
-
-CFonts.say('----------------- BPBOT -----------------', {
-    font: 'console',
-    align: 'center',
-    gradient: ['red', 'yellow']
-})
-CFonts.say('Welcome In\nTermux Bot Wa\nBy BPBOT', {
-  font: 'chrome',
-  align: 'center',
-  gradient: ['red', 'magenta']
-})
-function start() {
-  let args = [path.join('Bintangp02.js'), ...process.argv.slice(2)]
-  CFonts.say([process.argv[0], ...args].join(' '), {
-    font: 'console',
-    align: 'center',
-    gradient: ['red', 'magenta']
-  })
-  let p = spawn(process.argv[0], args, {
-    stdio: ['inherit', 'inherit', 'inherit', 'ipc']
-  })
-  .on('message', data => {
-    if (data == 'reset') {
-      console.log('RESET')
-      p.kill()
-      start()
-      delete p
-    }
-  })
-}
-start('Bintangp02.js')
